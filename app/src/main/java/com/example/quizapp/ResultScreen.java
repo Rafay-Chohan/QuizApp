@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class ResultScreen extends AppCompatActivity {
 
+    //Hooks
     int result;
     String username;
     Button btnShare,btnBack;
@@ -18,6 +19,7 @@ public class ResultScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_screen);
 
+        //Function to initialize Hooks etc
         init();
 
         username=getIntent().getStringExtra("username");
@@ -41,8 +43,9 @@ public class ResultScreen extends AppCompatActivity {
         tvUsername=findViewById(R.id.tvUsername);
 
     }
+    //implicit Calling of Activity to share score
     private void shareScore() {
-        String message = username+" just go " + result + "/10 Score in Quiz App!!";
+        String message = username+" just got " + result + "/10 Score in Quiz App!!";
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, message);

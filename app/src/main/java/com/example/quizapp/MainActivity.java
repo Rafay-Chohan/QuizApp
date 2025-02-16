@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Hooks
     EditText etName;
     Button btnStart;
 
@@ -18,14 +19,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Function to initialize Hooks etc
         init();
+
+
         btnStart.setOnClickListener(V->{
-            if(etName.getText().toString().equals("")){
+            if(etName.getText().toString().equals(""))//Check if Name has been Entered or not
+            {
                 Toast.makeText(MainActivity.this,"Please Enter Your Name",Toast.LENGTH_SHORT).show();
             }
             else {
                 Intent i = new Intent(this, Quiz1Activity.class);
-                i.putExtra("username",etName.getText().toString());
+                i.putExtra("username",etName.getText().toString());//Puts the Name in intent to pass to next activity
                 startActivity(i);
                 finish();
             }

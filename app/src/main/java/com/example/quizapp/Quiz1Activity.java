@@ -13,13 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Quiz1Activity extends AppCompatActivity {
-
+    //Hooks
     RadioGroup rgoptions;
     String username;
     int Result=0;
     RadioButton rbbuttonA,rbbuttonB,rbbuttonC,rbbuttonD;
     TextView tvQuestion,tvTitle;
-    int pos=0;
+    int pos=0;//Variable to track which question is the user is on
+
+    //String containing Questions
     String[] Questions = {
             "What is the capital of France?",
             "Which planet is known as the Red Planet?",
@@ -41,7 +43,7 @@ public class Quiz1Activity extends AppCompatActivity {
     String[] OptionD = {"Rome", "Jupiter", "10", "11", "Cheetah", "Yellow", "Helium", "Shark", "Rectangle", "8"};
 
     String[] Answers = {"Paris", "Mars", "8", "12", "Lion", "Blue", "Carbon Dioxide", "Blue Whale", "Square", "7"};
-    String []UserSelected={"","","","","","","","","",""};
+    String []UserSelected={"","","","","","","","","",""};//Track User Answers
     Button btnNext,btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +51,14 @@ public class Quiz1Activity extends AppCompatActivity {
         username =getIntent().getStringExtra("username");
         setContentView(R.layout.activity_quiz1);
 
+        //Function to initialize Hooks etc
         init();
         btnNext.setOnClickListener((v)->{
             int id = rgoptions.getCheckedRadioButtonId();
-            if(id!=-1)
+            if(id!=-1)//Checks if any option has been selected
             {
                 RadioButton rbOption = findViewById(id);
-                String textOfRadioButton = rbOption.getText().toString();
-                UserSelected[pos]=textOfRadioButton;
+                UserSelected[pos]=rbOption.getText().toString();
                 pos=pos+1;
                 if(pos==9){
                     goNext();
@@ -84,15 +86,17 @@ public class Quiz1Activity extends AppCompatActivity {
             goNext();
         });
     }
+    //Function to Calculate Result
     private void checkResult(){
         for(int i=0;i<Answers.length;i++){
             if(Answers[i].equals(UserSelected[i]))
                 Result=Result+1;
         }
     }
+    //Function to Swap to next question values
     private void goNext(){
         rgoptions.clearCheck();
-        if(pos!=0)
+        if(pos!=0)//Shows prev button only after 1st question
         {
             btnBack.setVisibility(View.VISIBLE);
         }

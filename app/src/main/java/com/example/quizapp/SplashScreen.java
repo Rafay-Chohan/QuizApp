@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
 
+    //Hooks
     Animation bottom_to_top;
     ImageView ivLogo;
     TextView tvSubtitle;
@@ -20,22 +21,28 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        
-        
-        ivLogo = findViewById(R.id.ivLogo);
-        tvSubtitle = findViewById(R.id.tvSubtitle);
 
+        //Function to initialize Hooks etc
+        init();
+
+        //Attaching Annimation to the hook
         bottom_to_top = AnimationUtils.loadAnimation(this, R.anim.bottom_to_top);
 
+        //Attaching Annimation to the objects
         ivLogo.setAnimation(bottom_to_top);
         tvSubtitle.setAnimation(bottom_to_top);
 
+        //Handler Starts the Activity after a delay
         new Handler()
                 .postDelayed(()->{
                     startActivity(new Intent(SplashScreen.this, MainActivity.class));
                     finish();
                 }, 4000);
 
+    }
+    private void init(){
+        ivLogo = findViewById(R.id.ivLogo);
+        tvSubtitle = findViewById(R.id.tvSubtitle);
     }
 
 }
