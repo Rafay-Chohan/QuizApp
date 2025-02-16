@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+    <string name="etName">Enter Your Name</string>
+    <string name="btnStart">Start</string>
+    <string name="question_1">Question</string>
+    <string name="q1_option_a">Option A</string>
+    <string name="q1_option_b">Option B</string>
+    <string name="q1_option_c">Option C</string>
+    <string name="q1_option_d">Option D</string>
+    <string name="btnback">Back</string>
+    <string name="tvresult">Result</string>
+    <string name="btnshare">Share</string>
+    <string name="ivSubtitle">21L-5497 Assignment 1</string>
+</resources>
